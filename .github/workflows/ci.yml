@@ -3,38 +3,36 @@ name: CI Pipeline for UI Automation Project
 on:
   push:
     branches:
-      - master  # Se ejecuta al hacer push a la rama master
+      - master
   pull_request:
     branches:
-      - master  # Se ejecuta al crear un PR a la rama master
+      - master
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Usamos un entorno de Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2  # Acción para clonar el repositorio
+        uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # Especificamos la versión de Java que estamos usando
-          distribution: 'temurin'  # Usamos Temurin JDK (OpenJDK)
+          java-version: '11'
+          distribution: 'temurin'
 
       - name: Set up Maven
-        uses: actions/setup-java@v2
-        with:
-          maven-version: '3.8.1'  # Versión de Maven
+        run: sudo apt-get update && sudo apt-get install -y maven
 
       - name: Build the project
-        run: mvn clean install  # Comando para construir el proyecto con Maven
+        run: mvn clean install
 
       - name: Run tests
-        run: mvn test  # Comando para ejecutar las pruebas de automatización
+        run: mvn test
 
       - name: Upload test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: test-results
-          path: target/surefire-reports/  # Ruta de los resultados de las pruebas
+          path: target/surefire-reports/
