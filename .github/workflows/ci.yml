@@ -31,12 +31,12 @@ jobs:
       - name: Run tests
         run: mvn test
 
-      - name: Upload Screenshots
-        uses: actions/upload-artifact@v3
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v2
         with:
           name: screenshots
-          path: target/screenshots/*.png
-
+          path: target/screenshots/
+      
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
