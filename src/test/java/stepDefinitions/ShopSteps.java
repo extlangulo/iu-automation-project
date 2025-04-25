@@ -12,5 +12,6 @@ public class ShopSteps {
     @Given("usuario abre la web de OpenCart")
     public void usuarioAbreLaWebDeOpenCart() {
         homePage.irPage();
+        DriverFactory.takeScreenshot(driver, "ShopSteps_web_OpenCart.png");
     }
 }

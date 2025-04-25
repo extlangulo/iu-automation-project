@@ -13,11 +13,13 @@ public class ProductoSteps {
     @And("agrega el producto al carrito de compras")
     public void agregaElProductoAlCarritoDeCompras() {
         productoPage.agregarAlCarrito();
+        DriverFactory.takeScreenshot(driver, "ProductoSteps_agrega_producto.png");
     }
 
     @And("ingresa al boton del carrito de compras")
     public void ingresaAlBotonDelCarritoDeCompras() {
         productoPage.irAlCarritoCompras();
+        DriverFactory.takeScreenshot(driver, "ProductoSteps_carrito_compras.png");
     }
 
 }
