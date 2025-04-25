@@ -34,7 +34,7 @@ jobs:
         run: mvn test  # Comando para ejecutar las pruebas de automatización
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: test-results
           path: target/surefire-reports/  # Ruta de los resultados de las pruebas
